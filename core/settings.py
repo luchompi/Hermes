@@ -8,7 +8,7 @@ DEBUG=env('DEBUG')
 SECRET_KEY=env('SECRET_KEY')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -128,7 +128,7 @@ CORS_ORIGIN_WHITELIST=(
     'http://127.0.0.1:8000',
     'http://localhost:8000',
     #Add The other sites needed
-    #ex: http://www.mysite.com/ 
+    #ex: http://www.mysite.com/
     )
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
