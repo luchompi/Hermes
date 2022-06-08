@@ -20,6 +20,16 @@ class sedeAPI(APIView):
 			return Response(serializer.data,status=status.HTTP_201_CREATED)
 		return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 	
+
+class SedeDetailAPI(APIView):
+	def get(self,request,pk,format=None):
+		try:
+			sede=Sede.objects.get(pk=pk)
+		except Sede.DoesNotExist:
+			return Response(status=status.HTTP_404_NOT_FOUND)
+		serializer=sedeSerializer(sede)
+		return Response(serializer.data)
+
 	def put(self,request,pk,format=None):
 		try:
 			sede=Sede.objects.get(pk=pk)
@@ -38,12 +48,3 @@ class sedeAPI(APIView):
 			return Response(status=status.HTTP_404_NOT_FOUND)
 		sede.delete()
 		return Response(status=status.HTTP_204_NO_CONTENT)
-
-class SedeDetailAPI(APIView):
-	def get(self,request,pk,format=None):
-		try:
-			sede=Sede.objects.get(pk=pk)
-		except Sede.DoesNotExist:
-			return Response(status=status.HTTP_404_NOT_FOUND)
-		serializer=sedeSerializer(sede)
-		return Response(serializer.data)
