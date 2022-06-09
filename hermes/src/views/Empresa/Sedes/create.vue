@@ -34,8 +34,6 @@ export default {
         getAPI.post('/empresa/sedes/api/v1.0/', data_sede)
         .then(response=>response.data)
         .then(dataResponse=>{
-          
-          console.log(dataResponse)
           window.location.href="empresa/sedes/"
         })
         
